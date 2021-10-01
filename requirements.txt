@@ -1,0 +1,8 @@
+pytorch-lightning==1.4.9
+gin-config
+wandb
+scipy
+matplotlib
+easydict
+open3d
+# torch_batch_svd: https://github.com/KinglittleQ/torch-batch-svd

@@ -1,0 +1,16 @@
+experiments/
+logs/
+weights/
+datasets/
+!datasets/config/
+!datasets/splits/
+__pycache__/
+eggs/
+.eggs/
+.vscode/
+
+*.swp
+*.so
+*.egg-info
+*.egg
+*.pth

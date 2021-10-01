@@ -1,0 +1,5 @@
+include './config/test_3dmatch.gin'
+
+DHVR.r_binsize = 0.05
+DHVR.t_binsize = 0.05
+test/get_dataset.dataset_name = 'ThreeDLoMatchTestDataset'

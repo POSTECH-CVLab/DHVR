@@ -1,0 +1,2 @@
+wget https://node1.chrischoy.org/data/publications/fcgf/2019-08-19_06-17-41.pth -O weights/fcgf_3dmatch_25.pth
+wget https://node1.chrischoy.org/data/publications/fcgf/2019-08-16_19-21-47.pth -O weights/fcgf_3dmatch_50.pth

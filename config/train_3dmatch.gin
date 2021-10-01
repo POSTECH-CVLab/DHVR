@@ -1,0 +1,101 @@
+# Constants
+voxel_size = 0.05
+best_metric = 'val/recall'
+best_metric_type = 'maximize'
+rte_thresh = 30
+rre_thresh = 15
+data_dir = 'datasets/3dmatch'
+batch_size = 1
+num_workers = 4
+num_trial = 100000
+r_binsize = 0.02
+t_binsize = 0.02
+lr = 1e-3
+momentum = 0.9
+weight_decay = 1e-4
+gamma = 0.99
+max_epoch = 10
+accumulate_grad_batches = 8
+
+# Train
+train.project_name = "3dmatch_registration"
+train.training_module = 'DHVRTraining'
+train.feature_class = @train/get_feature()
+train.model_class = @train/get_model()
+train.log_every_n_steps = 50
+train.refresh_rate_per_second = 1
+train.best_metric = %best_metric
+train.max_epoch = %max_epoch
+train.train_dataset = @train_dataset/ThreeDMatchPairDataset03
+train.val_dataset = @val_dataset/ThreeDMatchPairDataset03
+train.batch_size = %batch_size
+train.num_workers = %num_workers
+train.accumulate_grad_batches = %accumulate_grad_batches
+
+# Module
+DHVRTraining.optimizer_class = @torch.optim.SGD
+DHVRTraining.scheduler_class = @torch.optim.lr_scheduler.ExponentialLR
+DHVRTraining.log_every_n_steps = 50
+DHVRTraining.load_weights = False
+DHVRTraining.load_optimizers = False
+DHVRTraining.checkpoint_path = None
+DHVRTraining.export_path = None
+DHVRTraining.debug = False
+DHVRTraining.best_metric = %best_metric
+DHVRTraining.best_metric_type = %best_metric_type
+DHVRTraining.rte_thresh = %rte_thresh
+DHVRTraining.rre_thresh = %rre_thresh
+
+# torch
+torch.optim.SGD.lr = %lr
+torch.optim.SGD.momentum = %momentum
+torch.optim.SGD.weight_decay = %weight_decay
+torch.optim.lr_scheduler.ExponentialLR.gamma = %gamma
+
+# DHVR
+DHVR.voxel_size = %voxel_size
+DHVR.num_trial = %num_trial
+DHVR.r_binsize = %r_binsize
+DHVR.t_binsize = %t_binsize
+
+# Feature
+train/get_feature.name = 'FCGF'
+FCGF.voxel_size = %voxel_size
+FCGF.checkpoint_path = 'weights/fcgf_3dmatch_50.pth'
+
+# Model
+train/get_model.name = 'SimpleNetBN'
+SimpleNetBase.in_channels = 1
+SimpleNetBase.out_channels = 1
+SimpleNetBase.D = 6
+
+# Dataset
+train_dataset/ThreeDMatchPairDataset03.root = %data_dir
+train_dataset/ThreeDMatchPairDataset03.phase = 'train'
+train_dataset/ThreeDMatchPairDataset03.voxel_size = %voxel_size
+train_dataset/ThreeDMatchPairDataset03.rotation_range = 360
+train_dataset/ThreeDMatchPairDataset03.random_rotation = True
+val_dataset/ThreeDMatchPairDataset03.root = %data_dir
+val_dataset/ThreeDMatchPairDataset03.phase = 'val'
+val_dataset/ThreeDMatchPairDataset03.voxel_size = %voxel_size
+val_dataset/ThreeDMatchPairDataset03.random_rotation = True 
+
+logged_hparams.keys = [
+  'voxel_size',
+  'best_metric',
+  'best_metric_type',
+  'rte_thresh',
+  'rre_thresh',
+  'data_dir',
+  'batch_size',
+  'num_workers',
+  'num_trial',
+  'r_binsize',
+  't_binsize',
+  'lr',
+  'momentum',
+  'weight_decay',
+  'gamma',
+  'max_epoch',
+  'accumulate_grad_batches'
+]

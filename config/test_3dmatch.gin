@@ -1,0 +1,33 @@
+# Constants
+eps = 1e-8
+voxel_size = 0.05
+num_trial = 200000
+r_binsize = 0.02
+t_binsize = 0.02
+
+# DHVR
+DHVR.voxel_size = %voxel_size
+DHVR.num_trial = %num_trial
+DHVR.r_binsize = %r_binsize
+DHVR.t_binsize = %t_binsize
+
+# model
+test.model_class = @test/get_model()
+test/get_model.name = 'SimpleNetBN'
+SimpleNetBase.in_channels = 1
+SimpleNetBase.out_channels = 1
+SimpleNetBase.D = 6
+
+# feature
+test.feature_class = @test/get_feature()
+test/get_feature.name = 'FCGF'
+FCGF.voxel_size = %voxel_size
+FCGF.checkpoint_path = 'weights/fcgf_3dmatch_50.pth'
+
+# dataset
+test.dataset_class = @test/get_dataset()
+test/get_dataset.dataset_name = 'ThreeDMatchTestDataset'
+ThreeDMatchTestDataset.root = './datasets/3dmatch-test'
+
+# misc
+test.log_interval = 100
