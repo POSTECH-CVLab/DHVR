@@ -28,6 +28,12 @@ Point cloud registration is the task of estimating the rigid transformation that
 }
 ```
 
+### Experiments
+
+|  Speed vs Accuracy | Qualitative results |
+|:----------------------------:|:------------------:|
+| ![Table](assets/ablation_pareto.png)   | ![Accuracy vs. Speed](assets/qual_3dmatch_2.png) |
+
 ## Installation
 
 This repository is developed and tested on 
