@@ -4,8 +4,8 @@
 [Deep Hough Voting for Robust Global Registration](https://cvlab.postech.ac.kr/research/DHVR/)  
  [Junha Lee](https://junha-l.github.io)<sup>1</sup>,
  Seungwook Kim<sup>1</sup>,
- [Minsu Cho](http://tancik.com/)<sup>1</sup>,
- [Jaesik Park](http://jonbarron.info/)<sup>1</sup><br>
+ [Minsu Cho](http://cvlab.postech.ac.kr/~mcho/)<sup>1</sup>,
+ [Jaesik Park](http://jaesik.info/)<sup>1</sup><br>
  <sup>1</sup>POSTECH CSE & GSAI<br>
 in ICCV 2021 
 
